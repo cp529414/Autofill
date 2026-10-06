@@ -1,0 +1,54 @@
+/* Shared by pages, embedded forms, and inherited by shadow-root controls. */
+:root {
+  color-scheme: light dark;
+  --page: #f8faf5;
+  --surface: #ffffff;
+  --raised: #eef2e8;
+  --text: #18291e;
+  --secondary: #50604f;
+  --muted: #596852;
+  --rule: #43593c;
+  --accent: #4b702e;
+  --button: #233b28;
+  --button-text: #ffffff;
+  --control-border: #708269;
+  --divider: #a8b79e;
+  --code-bg: #e7eddd;
+  --badge: #d9edbd;
+  --focus: #507c31;
+  --error: #a72e22;
+  --notice-bg: #fff0c4;
+  --notice-text: #594600;
+  --install-bg: #203a29;
+  --install-text: #f8faf5;
+  --install-link: #d5eabc;
+  --install-code: #d9e6ca;
+  --install-code-text: #203a29;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #141b16;
+    --surface: #1e2820;
+    --raised: #2b3926;
+    --text: #e6eee1;
+    --secondary: #b9c7b2;
+    --muted: #a8b5a2;
+    --rule: #c9dfb5;
+    --accent: #b2d98c;
+    --button: #b2d98c;
+    --button-text: #18291e;
+    --control-border: #71846a;
+    --divider: #687c60;
+    --code-bg: #2b3926;
+    --badge: #35482b;
+    --focus: #b2d98c;
+    --error: #ff9b8e;
+    --notice-bg: #3b321d;
+    --notice-text: #f1d98b;
+    --install-bg: #233b28;
+    --install-text: #e6eee1;
+    --install-link: #b2d98c;
+    --install-code: #35482b;
+    --install-code-text: #e6eee1;
+  }
+}

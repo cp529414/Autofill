@@ -1,0 +1,188 @@
+[
+  {
+    "type": "text",
+    "signature": "input[id=\"full-name\"][name=\"full-name\"][type=\"text\"]",
+    "modifier": "value",
+    "value": "Alex Example"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"email\"][name=\"email\"][type=\"email\"]",
+    "modifier": "value",
+    "value": "alex@example.com"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"phone\"][name=\"phone\"][type=\"tel\"]",
+    "modifier": "value",
+    "value": "+1 202 555 0148"
+  },
+  {
+    "type": "text",
+    "signature": "textarea[id=\"address\"][name=\"address\"]",
+    "modifier": "value",
+    "value": "123 Example Street\nTaipei"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"search\"][name=\"search\"][type=\"search\"]",
+    "modifier": "value",
+    "value": "practice"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"website\"][name=\"website\"][type=\"url\"]",
+    "modifier": "value",
+    "value": "https://example.com"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"password\"][name=\"password\"][type=\"password\"]",
+    "modifier": "value",
+    "value": "Example-only-123"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"quantity\"][name=\"quantity\"][type=\"number\"]",
+    "modifier": "value",
+    "value": "3"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"start-date\"][name=\"start-date\"][type=\"date\"]",
+    "modifier": "value",
+    "value": "2026-10-03"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"month\"][name=\"month\"][type=\"month\"]",
+    "modifier": "value",
+    "value": "2026-10"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"week\"][name=\"week\"][type=\"week\"]",
+    "modifier": "value",
+    "value": "2026-W40"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"time\"][name=\"time\"][type=\"time\"]",
+    "modifier": "value",
+    "value": "14:30"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"datetime\"][name=\"datetime\"][type=\"datetime-local\"]",
+    "modifier": "value",
+    "value": "2026-10-03T14:30"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"color\"][name=\"color\"][type=\"color\"]",
+    "modifier": "value",
+    "value": "#4b702e"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"range\"][name=\"range\"][type=\"range\"]",
+    "modifier": "value",
+    "value": "75"
+  },
+  {
+    "type": "text",
+    "signature": "select[id=\"country\"][name=\"country\"]",
+    "modifier": "value",
+    "value": "TW"
+  },
+  {
+    "type": "multiselect",
+    "signature": "select[id=\"interests\"][name=\"interests\"]",
+    "modifier": "multiselect",
+    "value": "[\"HTML\",\"JavaScript\"]"
+  },
+  {
+    "type": "checkbox",
+    "signature": "input[id=\"newsletter\"][name=\"newsletter\"][type=\"checkbox\"]",
+    "modifier": "checked",
+    "value": "true"
+  },
+  {
+    "type": "radio",
+    "signature": "input[id=\"single-radio\"][type=\"radio\"]",
+    "modifier": "checked",
+    "value": "true"
+  },
+  {
+    "type": "radioGroup",
+    "signature": "input[type=\"radio\"][name=\"contact_method\"]",
+    "modifier": "radioGroup",
+    "value": "010"
+  },
+  {
+    "type": "checkGroup",
+    "signature": "input[type=\"checkbox\"][name=\"topics\"]",
+    "modifier": "checkGroup",
+    "value": "101"
+  },
+  {
+    "type": "otpGroup",
+    "signature": "div[id=\"otp\"]",
+    "modifier": "otpGroup",
+    "value": "123456"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"readonly\"][name=\"readonly\"][type=\"text\"]",
+    "modifier": "value",
+    "value": "Programmatic update"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"hidden-value\"][name=\"hidden-value\"][type=\"hidden\"]",
+    "modifier": "value",
+    "value": "Hidden example"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"placeholder-target\"][name=\"placeholder-target\"][type=\"text\"][placeholder=\"Original placeholder\"]",
+    "modifier": "value",
+    "value": "Updated placeholder"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"placeholder-target\"][name=\"placeholder-target\"][type=\"text\"][placeholder=\"Original placeholder\"]",
+    "modifier": "placeholder",
+    "value": "Updated placeholder"
+  },
+  {
+    "type": "text",
+    "signature": "div[id=\"editable\"][role=\"textbox\"]",
+    "modifier": "innerText",
+    "value": "Hello editor\nSecond line"
+  },
+  {
+    "type": "text",
+    "signature": "p[id=\"text-target\"]",
+    "modifier": "textContent",
+    "value": "Updated text content"
+  },
+  {
+    "type": "text",
+    "signature": "input[id=\"linked-visible\"][name=\"linked-visible\"][type=\"text\"]",
+    "modifier": "value",
+    "value": "Linked value"
+  },
+  {
+    "type": "text",
+    "signature": "practice-shadow[id=\"open-shadow\"] >>> input[name=\"shadow-input\"]",
+    "modifier": "value",
+    "value": "Open shadow value"
+  },
+  {
+    "type": "text",
+    "signature": "practice-shadow[id=\"closed-shadow\"] >>> input[name=\"shadow-input\"]",
+    "modifier": "value",
+    "value": "Closed shadow value"
+  }
+]

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="color-scheme" content="light dark">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guide · Autofill</title>
+  <meta name="description" content="Configure local Autofill rules, site exclusions, and practice with fictional data.">
+  <link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/svg+xml" href="assets/icons/icon-light.svg"/><link rel="icon" type="image/svg+xml" href="assets/icons/icon-dark.svg" media="(prefers-color-scheme: dark)"/></head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header><a class="brand" href="./"><picture class="brand-icon"><source media="(prefers-color-scheme: dark)" srcset="assets/icons/icon-dark.svg"/><img src="assets/icons/icon-light.svg" width="36" height="36" alt=""/></picture>Autofill<span class="tag">FREE</span></a><nav aria-label="Main navigation"><a href="practice.html">Practice</a><a href="guide.html" aria-current="page">Guide</a><a href="privacy.html">Privacy</a></nav></header>
+  <main id="main"><article class="document">
+    <h1>Autofill guide</h1>
+    <p>Your rules and preferences stay in your browser. No account or server is required. Save changes and reload affected pages to use the new settings.</p>
+    <nav aria-label="Guide sections"><a href="#site-exclusions">Site exclusions</a><a href="#csv">JSON &amp; CSV</a><a href="#dynamic-values">Dynamic values</a><a href="#manual-mode">Manual execution</a></nav>
+    <section id="site-exclusions">
+      <h2>Site exclusions</h2>
+      <p>Open <strong>General Settings → Site exclusions</strong> and enter one URL pattern per line. Exclusions take priority over every matching fill, click, and script rule. Clipboard values are not read for excluded rules.</p>
+      <ul><li><code>https://example.com/*</code> excludes every path on that host.</li><li><code>https://*.example.com/*</code> excludes its subdomains. Add both patterns to exclude the main host and its subdomains.</li><li><code>https://example.com/private/*</code> excludes only that path.</li></ul>
+      <p><code>*</code> matches any characters. Matching uses the same URL patterns as the rule’s Site field, rather than page titles or regular expressions. Blank lines are ignored.</p>
+      <p>Each iframe is checked against its own URL. If a page embeds a form from another host, add a pattern for that host too. Save settings, then reload the page. Removing an exclusion does not undo previous page changes.</p>
+    </section>
+    <section id="csv">
+      <h2>JSON and CSV import/export</h2>
+      <p>Use <strong>Export CSV</strong> in the Rules Editor to download its current rows, including unsaved changes. To import, open <strong>Import Rules</strong>, paste JSON or CSV, choose a local file, or drop one file into the import text box. Autofill detects the format from its contents; no format selection is needed.</p>
+      <p><strong>Append</strong> adds rows; <strong>Replace</strong> replaces all rows in the editor. Neither writes saved rules immediately. Review the result and click <strong>Save Rules</strong>. Invalid files leave the editor untouched.</p>
+      <p>Download example rules as <a href="practice/rules-example.json" download>JSON</a> or <a href="practice/rules-example.csv" download>CSV</a>. Change the Site pattern to your actual Practice page URL before saving.</p>
+      <p>Headers are <code>type,signature,modifier,value,site,delay,private,fillMethod</code>. Type, signature, value, and site are required columns; the others are optional. Delay uses milliseconds and private is true or false. fillMethod is optional and defaults to overwrite. Quote cells containing commas, quotes, or newlines; double any quotes inside a quoted cell.</p>
+      <p>Exports contain real private values even when settings display dots. Cells beginning with formula characters receive an apostrophe prefix for spreadsheet use; Autofill removes this prefix on CSV import. Use JSON for exact backups. Rule exports do not include General Settings.</p>
+    </section>
+    <section id="dynamic-values">
+      <h2>Dynamic values and escaping</h2>
+      <p>Enter these expressions in a rule’s Value field. You can combine them with ordinary text, such as <code>Order-{{alnum:12}}</code>. Script rules are not expanded.</p>
+      <ul><li><code>{{today}}</code>: local date in YYYY-MM-DD format.</li><li><code>{{random:6}}</code>: random digits, including possible leading zeros.</li><li><code>{{random:1-100}}</code>: inclusive random integer range. Ordered bounds must fit between −2147483648 and 2147483647.</li><li><code>{{alnum:12}}</code>, <code>{{lower:8}}</code>, <code>{{upper:8}}</code>, <code>{{hex:6}}</code>: letters and digits, lowercase letters, uppercase letters, or lowercase hexadecimal characters.</li><li><code>{{choice:red|green|blue}}</code>: choose one nonempty option. Use <code>\|</code> for a literal pipe inside an option and <code>\\</code> for a literal backslash. Spaces are preserved.</li><li><code>{{uuid}}</code>: random UUID.</li><li><code>{{clipboard}}</code>: clipboard text, inserted literally without expanding expressions inside it.</li></ul>
+      <p>String lengths default to 6 and are limited to 1–64 characters. Each value resolves once per rule per frame and stays stable during rechecks. Reloading resolves it again; separate frames may receive different random values.</p>
+      <p>Prefix an expression with one backslash: <code>\{{today}}</code> fills the literal text <code>{{today}}</code>. Two backslashes before an expression output one backslash and allow expansion. Other backslashes remain unchanged. This follows Handlebars inline escaping; full helpers, raw blocks, and nested expressions are not supported. Unknown expressions, invalid ranges, and empty choice options remain unchanged.</p>
+    </section>
+    <section id="manual-mode">
+      <h2>Manual execution</h2>
+      <ol><li>Save your rules. Open <strong>General Settings</strong>, enable <strong>Manual execution only</strong>, and save settings.</li><li>Reload the form page. Nothing fills automatically.</li><li>Right-click the page and choose <strong>Fill this page now</strong>, or press <strong>Alt+Shift+F</strong>. Change the shortcut in <code>chrome://extensions/shortcuts</code> if it conflicts with another shortcut.</li></ol>
+      <p>The extension icon shows RUN when execution starts, OFF when the top page is excluded, or ERR when the command is unavailable. RUN means started; review page results to confirm successful filling.</p>
+      <p>Each invocation reads saved rules and settings, then runs matching rules once across the page’s frames. Exclusions still apply. Loop mode is not started, even if its preference is enabled. Newly appearing fields on the same route remain eligible until navigation. After navigating, trigger another manual run.</p>
+      <p>Fill this page now also works in automatic mode; it stops the current loop until reload. Unsaved editor changes are not used. Chrome internal pages and other protected pages cannot be filled. Review click and script rules before running, because they can submit forms.</p>
+      <p>Try it on the <a href="practice.html">Practice page</a>: save a text rule, turn on manual mode, reload, and trigger the command.</p>
+    </section>
+  </article></main>
+  <footer><a class="brand" href="./"><picture class="brand-icon"><source media="(prefers-color-scheme: dark)" srcset="assets/icons/icon-dark.svg"/><img src="assets/icons/icon-light.svg" width="36" height="36" alt=""/></picture>Autofill</a><p>Type less. Accomplish more.</p><div><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a></div><small>© 2026 cp529414 · Independent project.</small></footer>
+</body>
+</html>

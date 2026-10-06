@@ -1,0 +1,115 @@
+.practice-jumps{gap:8px 20px;margin-block:24px}.practice-jumps a{font-size:14px;text-decoration:underline}.subgroup legend{font-size:17px;margin:0;padding-inline:8px}.rule-hint{font:12px/1.4 ui-monospace,monospace;color:var(--rule);margin:0;overflow-wrap:anywhere}.editable,.property-target{height:36px;min-height:36px;max-height:36px;padding:6px 10px;overflow:auto;border:1px solid var(--control-border);border-radius:6px;overflow-wrap:anywhere}.otp-row{display:flex;gap:8px}.otp-row input{min-width:0;max-width:55px;text-align:center;padding-inline:4px}input[type=color]{padding:6px}input[type=range]{padding:0;background:transparent!important}input[type=image]{max-width:48px;padding:0!important;border:0!important}.practice-frame{width:100%;height:204px;border:1px solid var(--control-border);border-radius:8px;margin-block:20px}.demo-page{padding:20px;background:var(--surface)}.demo-page main{padding:0;max-width:900px}.demo-page h1{font-size:32px;margin-block:20px}.demo-page .demo-control{display:flex;align-items:center;gap:10px;width:100%;min-width:0;margin:0}.demo-page .chosen-container,.demo-page .select2-container,.demo-page .bootstrap-select,.demo-page .tagify{max-width:100%}.demo-page .tagify{width:100%;min-height:36px}.library-status{padding:12px;background:var(--raised);border-radius:6px}.editor-target{min-height:36px;max-height:36px;overflow:auto}.demo-page .ck-editor__editable{min-height:36px;max-height:36px;overflow:auto}.demo-page .ql-editor{min-height:36px;max-height:36px;overflow:auto}.demo-page .ProseMirror{border:1px solid var(--control-border);padding:12px;min-height:36px;max-height:36px;overflow:auto}.demo-page .public-DraftEditor-content,.demo-page [data-slate-editor]{border:1px solid var(--control-border);padding:12px;min-height:36px;max-height:36px;overflow:auto}@media(max-width:760px){.practice-head h1{font-size:40px}.otp-row{gap:4px}.rule-hint{font-size:12px}.demo-page{padding:14px}.demo-page .actions{gap:8px}.demo-page .actions a{font-size:14px}}
+
+.practice-tools{margin-block:0 32px}.practice-tools .help{max-width:80ch}
+#practice-form{padding:0;border:0;background:transparent;border-radius:0}
+.practice-category{margin-block:36px}.practice-category h2{font-size:25px;margin-block:0 16px;letter-spacing:-.025em}
+.table-wrapper{max-width:100%;overflow:auto;border:1px solid var(--divider);border-radius:10px;background:var(--surface);margin-block:20px}
+.practice-table{width:100%;min-width:640px;table-layout:fixed;border-collapse:separate;border-spacing:0}
+.practice-table th,.practice-table td{padding:10px 14px;text-align:left;vertical-align:middle;overflow-wrap:anywhere}
+.practice-table thead th{background:var(--raised);font-size:14px;letter-spacing:.02em;border-bottom:1px solid var(--divider)}
+.practice-table th:first-child{width:45%}.practice-table th+th,.practice-table td+td{border-left:1px solid var(--divider)}
+.practice-table tbody tr+tr td{border-top:1px solid var(--divider)}
+.practice-table label{margin-top:0}.practice-table .rule-hint,.practice-table .help{margin:0}.practice-table .rule-hint:last-child,.practice-table .help:last-child{margin-bottom:0}
+.practice-table .subgroup{margin:0;padding:0;border:0}.practice-table .subgroup legend{float:left;font-size:13px;line-height:36px;white-space:nowrap;padding:0;margin:0 12px 0 0}
+.practice-table .actions{margin-block:0 16px}.practice-table button.secondary{margin:0}.practice-table .practice-frame{margin-block:0}
+.practice-table pre{white-space:pre-wrap;overflow-wrap:anywhere}.practice-table input,.practice-table select,.practice-table textarea{min-width:0}
+@media(max-width:760px){.practice-table th,.practice-table td{padding:10px}.practice-category h2{font-size:22px}}
+#practice-form .practice-table{min-width:0}.rule-hint code{white-space:pre-wrap}
+@media(max-width:760px){#practice-form .practice-table th,#practice-form .practice-table td{padding:10px}.otp-row{flex-wrap:nowrap}.otp-row input{flex:1 1 32px;max-width:40px}.sample-cell button{max-width:100%;white-space:normal}}
+
+.sample-line{display:flex;align-items:center;gap:10px;min-width:0;width:100%}
+.sample-line .practice-field{display:contents}
+.sample-line label:not(.choice),.demo-control>label{flex:0 1 140px;max-width:40%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;font-size:13px}
+.sample-line>p{margin:0;font-size:12px;white-space:nowrap}.sample-line>practice-shadow{flex:1;min-width:0}
+.sample-line>input:not([type=hidden]),.sample-line>textarea,.sample-line>select,.sample-line .practice-field>input,.sample-line .practice-field>textarea,.demo-control>input,.demo-control>textarea,.demo-control>select{flex:1;width:0;min-width:0}
+.practice-table input:not([type=checkbox]):not([type=radio]):not([type=image]),.practice-table select,.practice-table textarea{height:36px;min-height:36px;max-height:36px;padding:6px 10px;font-size:14px;line-height:22px}
+.practice-table textarea{resize:none;overflow:auto}.practice-table .editable,.practice-table .property-target{flex:1;font-size:14px;line-height:22px;margin:0}
+.practice-table .subgroup{flex:1;min-inline-size:0}.choice-row{display:flex;align-items:center;gap:4px 12px;flex-wrap:wrap;min-height:36px}
+.practice-table .choice{display:inline-flex;gap:6px;min-height:36px;font-size:13px;white-space:nowrap}.practice-table .choice input{margin:0;width:16px;height:16px}
+.practice-table .otp-row{gap:4px}.practice-table .otp-row{flex-wrap:wrap}.practice-table #otp input{box-sizing:border-box;width:38px;min-width:38px;max-width:38px;flex:0 0 38px;padding:6px 4px;font-size:16px;line-height:22px}
+.practice-table button,.practice-table .button{min-height:36px;padding:6px 10px;font-size:13px;white-space:nowrap}.practice-table details{padding:0;border:0;width:100%}.practice-table summary{font-size:13px}.practice-table details p{margin:8px 0 0}
+.rule-line{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin:0}.rule-details{display:flex;align-items:center;flex-wrap:wrap;gap:4px 12px;margin:0;font:12px/1.4 system-ui}
+.rule-details>div{display:inline-flex;align-items:center;gap:4px;min-width:0}.rule-details dt{font-weight:600;white-space:nowrap}.rule-details dd{margin:0;min-width:0}.rule-details code{font-size:11px;white-space:normal;overflow-wrap:anywhere}
+
+.click-control{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}.click-count{font:12px/1.4 ui-monospace,monospace;color:var(--rule);white-space:nowrap}.click-count::before{content:"× "}
+.demo-page .select2-container,.demo-page .bootstrap-select,.demo-page .chosen-container,.demo-page .ts-wrapper,.demo-page .tagify{flex:1;min-width:0;max-width:100%}
+.demo-page .tagify{height:36px;overflow:auto;flex-wrap:nowrap}.demo-page .ql-editor{padding:6px 10px;font-size:14px;line-height:22px}.demo-page .ProseMirror{padding:6px 10px;line-height:22px}.demo-page .ql-toolbar{padding:4px}.demo-page .public-DraftEditor-content,.demo-page [data-slate-editor]{padding:6px 10px;line-height:22px}
+#srcdoc-frame{height:80px}.demo-page:has(#frame-name){padding:10px}.demo-page:has(#frame-name) .table-wrapper{margin:0}
+@media(max-width:760px){.sample-line,.demo-control{flex-wrap:wrap}.sample-line label:not(.choice),.demo-control>label{max-width:100%;flex-basis:100%;font-size:12px}.sample-line>input:not([type=hidden]),.sample-line>textarea,.sample-line>select,.sample-line .practice-field>input,.sample-line .practice-field>textarea{width:100%;flex-basis:100%}.practice-table .subgroup legend{float:none;line-height:24px}.rule-details code{white-space:normal;overflow-wrap:anywhere}.click-control{gap:4px}.practice-table button{max-width:100%;white-space:normal}.choice-row{gap:4px 8px}.rule-details{gap:4px 8px}}
+
+
+
+.demo-page .practice-table{min-width:0}.rule-details>div{max-width:100%}.rule-details>div:has(dt+dd code){align-items:baseline}
+
+.embedded-demo main{max-width:none;margin:0}.embedded-demo h1,.embedded-demo h2{font-size:20px;margin-block:0 12px}
+.library-samples .practice-table{min-width:0}.library-samples h3{font-size:18px;margin:24px 0 12px}.library-samples .demo-control{display:flex;align-items:center;gap:10px;width:100%;min-width:0}.editor-label{flex:0 1 140px;max-width:40%;font-size:13px}.library-editor{flex:1;min-width:0}.library-editor>div{max-width:100%}.library-editor [contenteditable=true]{min-height:36px;max-height:36px;overflow:auto;font:14px/22px system-ui}.library-editor [contenteditable=true] p{margin:0}.library-editor .ProseMirror,.library-editor .public-DraftEditor-content,.library-editor [data-slate-editor]{border:1px solid var(--control-border);border-radius:6px;padding:6px 10px}.library-editor .ql-editor{padding:6px 10px}.library-editor .ql-container{font:14px/22px system-ui}.library-editor .ql-editor.ql-blank::before{display:none}
+:is(.demo-page,.library-samples) .bootstrap-select,.library-samples .select2-container,.library-samples .chosen-container,.library-samples .ts-wrapper,.library-samples .tagify{flex:1;min-width:0;max-width:100%}.library-samples .tagify{height:36px;overflow:auto;flex-wrap:nowrap}:is(.demo-page,.library-samples) .bootstrap-select{position:relative}:is(.demo-page,.library-samples) .bootstrap-select>.dropdown-menu{display:none;position:absolute;z-index:1000;min-width:100%;background:var(--surface);border:1px solid var(--control-border);border-radius:6px;padding:4px}:is(.demo-page,.library-samples) .bootstrap-select>.dropdown-menu.show{display:block}:is(.demo-page,.library-samples) .bootstrap-select .dropdown-menu.inner{position:static;padding:0;list-style:none}:is(.demo-page,.library-samples) .bootstrap-select .dropdown-item{display:block;padding:6px 10px;color:var(--text);text-decoration:none}:is(.demo-page,.library-samples) .bootstrap-select .dropdown-item:hover,:is(.demo-page,.library-samples) .bootstrap-select .dropdown-item.active{background:var(--raised)}:is(.demo-page,.library-samples) .bootstrap-select .filter-option-inner-inner{font:14px/22px system-ui}:is(.demo-page,.library-samples) .bootstrap-select>.dropdown-toggle{width:100%;text-align:left;border:1px solid var(--control-border);background:var(--surface);color:var(--text)}:is(.demo-page,.library-samples) .bootstrap-select .bs-searchbox input{width:100%}
+@media(max-width:760px){.editor-label{flex-basis:100%;max-width:100%}.library-editor{flex-basis:100%}}
+.editable p{margin:0}
+
+/* Third-party styles load asynchronously. Scope overrides to the page so their
+   default light colors cannot hide control boundaries or hints in either theme. */
+body :is(.select2-container .select2-selection,.ts-wrapper .ts-control,.chosen-container .chosen-single,.chosen-container .chosen-choices,.tagify,.ql-container.ql-snow,.ql-toolbar.ql-snow){border-color:var(--control-border);background:var(--surface);color:var(--text);box-shadow:none}
+body .chosen-container .chosen-single{background-image:none}
+body :is(.select2-container .select2-selection__rendered,.chosen-container .chosen-single span,.ts-wrapper .ts-control input,.tagify .tagify__input){color:var(--text)}
+body :is(.bootstrap-select>.dropdown-toggle.bs-placeholder,.bootstrap-select>.dropdown-toggle.bs-placeholder:hover,.bootstrap-select>.dropdown-toggle.bs-placeholder:focus,.select2-selection__placeholder){color:var(--muted)}
+body .tagify{--tags-border-color:var(--control-border);--tags-hover-border-color:var(--accent);--tags-focus-border-color:var(--focus);--tag-bg:var(--raised);--tag-hover:var(--code-bg);--tag-text-color:var(--text);--tag-remove-btn-color:var(--text);--tag-remove-btn-bg--hover:var(--error);--placeholder-color:var(--muted);--placeholder-color-focus:var(--muted);--input-color:var(--text)}
+body :is(.select2-dropdown,.ts-dropdown,.chosen-container .chosen-drop,.tagify__dropdown__wrapper){background:var(--surface);color:var(--text);border-color:var(--control-border);box-shadow:0 8px 24px #0004}
+body :is(.select2-dropdown .select2-search__field,.chosen-container .chosen-search input){background:var(--surface);color:var(--text);border-color:var(--control-border)}
+body :is(.select2-results__option--highlighted.select2-results__option--selectable,.ts-dropdown .active,.chosen-container .chosen-results li.highlighted,.tagify__dropdown__item--active){background:var(--button);color:var(--button-text)}
+body :is(.select2-results__option--selected,.ts-control .item){background:var(--raised);color:var(--text)}
+body .select2-container .select2-selection__arrow b{border-top-color:var(--muted)}
+body .ts-wrapper.single .ts-control::after{border-top-color:var(--muted)}
+body .chosen-container .chosen-single div b{background:none}
+body .chosen-container .chosen-single div b::after{content:"";position:absolute;top:10px;right:6px;border:5px solid transparent;border-top-color:var(--muted)}
+body .chosen-container-active.chosen-with-drop .chosen-single div b::after{border-top-color:transparent;border-bottom-color:var(--muted);top:5px}
+body :is(.select2-container--focus .select2-selection,.select2-container--open .select2-selection,.ts-wrapper.focus .ts-control,.chosen-container-active .chosen-single,.tagify:focus-within,.ql-container:focus-within){outline:3px solid var(--focus);outline-offset:2px}
+body :is(.ql-snow .ql-stroke){stroke:var(--text)}
+body :is(.ql-snow .ql-fill){fill:var(--text)}
+
+/* Date pickers are separate floating layers and need their own themed surfaces. */
+body :is(.flatpickr-calendar,.flatpickr-calendar .flatpickr-months .flatpickr-month,.flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months,.flatpickr-calendar .flatpickr-weekdays,.flatpickr-calendar span.flatpickr-weekday){background:var(--surface);color:var(--text)}
+body .flatpickr-calendar{border:1px solid var(--control-border);box-shadow:0 8px 24px #0004}
+body .flatpickr-calendar .flatpickr-day{color:var(--text)}
+body .flatpickr-calendar .flatpickr-day.today{border-color:var(--accent)}
+body .flatpickr-calendar .flatpickr-day:is(.prevMonthDay,.nextMonthDay,.flatpickr-disabled){color:var(--muted)}
+body .flatpickr-calendar .flatpickr-day:is(:hover,:focus){background:var(--raised);border-color:var(--control-border)}
+body .flatpickr-calendar .flatpickr-day.selected{background:var(--button);border-color:var(--button);color:var(--button-text)}
+body .flatpickr-calendar :is(.flatpickr-prev-month,.flatpickr-next-month){color:var(--text);fill:var(--text)}
+body .flatpickr-calendar .numInputWrapper:hover{background:var(--raised)}
+body .flatpickr-calendar.arrowTop::before{border-bottom-color:var(--control-border)}
+body .flatpickr-calendar.arrowTop::after{border-bottom-color:var(--surface)}
+body .flatpickr-calendar.arrowBottom::before{border-top-color:var(--control-border)}
+body .flatpickr-calendar.arrowBottom::after{border-top-color:var(--surface)}
+body :is(.ui-datepicker.ui-widget-content,.ui-datepicker .ui-widget-header){background:var(--surface);color:var(--text);border-color:var(--control-border)}
+body .ui-datepicker :is(.ui-state-default,.ui-widget-content .ui-state-default){background:var(--raised);color:var(--text);border-color:var(--divider)}
+body .ui-datepicker :is(.ui-state-hover,.ui-state-active){background:var(--button);color:var(--button-text);border-color:var(--button)}
+body .ui-datepicker .ui-state-highlight{border-color:var(--accent)}
+body .ui-datepicker .ui-datepicker-prev span,body .ui-datepicker .ui-datepicker-next span{background-image:none;text-indent:0;font-size:0}
+body .ui-datepicker .ui-datepicker-prev span::after{content:"‹";font-size:20px;color:var(--text)}
+body .ui-datepicker .ui-datepicker-next span::after{content:"›";font-size:20px;color:var(--text)}
+/* Match Select2's full selector so its later-loaded stylesheet cannot win. */
+body .select2-container--default .select2-selection--single .select2-selection__rendered{color:var(--text)}
+body .select2-container--default .select2-selection--single .select2-selection__placeholder{color:var(--muted)}
+body .select2-container--default .select2-selection--single .select2-selection__arrow b{border-top-color:var(--muted)}
+body .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{border-top-color:transparent;border-bottom-color:var(--muted)}
+body .clr-picker{background:var(--surface);color:var(--text);border:1px solid var(--control-border);box-shadow:0 8px 24px #0004}
+body .clr-picker :is(.clr-color,.clr-close){background:var(--surface);color:var(--text);border-color:var(--control-border)}
+body .clr-picker :is(.clr-segmented,.clr-segmented label){color:var(--muted)}
+body .clr-picker .clr-segmented input:checked+label{background:var(--button);color:var(--button-text)}
+/* jscolor writes inline picker chrome; keep its palette/canvas colors intact. */
+body .jscolor-wrap .jscolor-border{background:var(--surface)!important;border-color:var(--control-border)!important}
+body .jscolor-wrap .jscolor-btn{color:var(--text)!important}
+/* Generic form sizing must not crop the calendar's month/year heading. */
+body .flatpickr-calendar .flatpickr-current-month :is(select.flatpickr-monthDropdown-months,input.cur-year){height:26px;min-height:26px;max-height:26px;padding:0 2px;border:0;border-radius:0;font:inherit;color:var(--text);background:var(--surface)}
+body .flatpickr-calendar .flatpickr-current-month select.flatpickr-monthDropdown-months{width:auto}
+body .flatpickr-calendar .flatpickr-current-month input.cur-year{width:100%}
+body .ui-datepicker .ui-datepicker-prev span,body .ui-datepicker .ui-datepicker-next span{line-height:16px;color:var(--text)}
+body .ui-datepicker .ui-datepicker-prev span::after,body .ui-datepicker .ui-datepicker-next span::after{display:block;line-height:16px;text-align:center}
+body .clr-picker input.clr-color:focus{border-color:var(--focus);outline:2px solid var(--focus);outline-offset:2px}
+
+body .ui-datepicker .ui-datepicker-prev span::after,body .ui-datepicker .ui-datepicker-next span::after{position:absolute;inset:0}
+/* Coloris places Close inside the selected-color preview, rather than a footer. */
+body .clr-picker .clr-close{position:absolute;inset:0;width:32px;height:32px;min-height:32px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--button-text);text-indent:-9999px;overflow:hidden}
+body .clr-picker .clr-close::before{display:none}
+body .clr-picker .clr-close::after{content:"×";position:absolute;inset:6px;width:20px;height:20px;border-radius:50%;background:var(--button);color:var(--button-text);font:18px/20px system-ui;text-indent:0;text-align:center}

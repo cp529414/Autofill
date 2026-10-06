@@ -1,0 +1,42 @@
+/* Sample form layout. */
+.sample-line,.library-samples .demo-control{flex-wrap:wrap}
+.sample-line label:not(.choice),.demo-control>label,.editor-label{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:break-word;max-width:100%;flex:0 1 140px}
+.sample-line>p,.sample-note{white-space:normal;font-size:12px;margin:6px 0 0;flex:0 0 100%;width:100%}
+.practice-table .subgroup legend{float:left;white-space:normal;line-height:22px;padding-block:7px;width:110px;max-width:40%;margin-right:10px;text-align:left}
+.practice-table .choice-row,.practice-table .otp-row{justify-content:flex-end}
+.practice-table #otp input{min-width:24px;width:32px;max-width:32px;flex:0 1 32px}
+.password-control{position:relative;display:flex;flex:1;min-width:0}
+.practice-table .password-control input{width:100%;padding-inline-end:42px}
+.practice-table #toggle-password{position:absolute;inset-inline-end:1px;top:1px;display:grid;place-items:center;border:0;background:transparent;color:var(--rule);width:36px;height:34px;min-height:34px;padding:4px}
+#toggle-password svg{pointer-events:none}
+#toggle-password[aria-pressed=true] svg{opacity:.6}
+#dynamic-target:empty{display:none}
+#dynamic-target{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#dynamic-target input{flex:1;min-width:0}
+@media(max-width:760px){
+ .sample-line label:not(.choice),.demo-control>label,.editor-label{flex-basis:100%}
+ .password-control{flex-basis:100%}
+ .practice-table .subgroup legend{float:left;line-height:22px}
+ .practice-table .otp-row{gap:3px}
+}
+
+/* Keep native range endpoints reachable; generic input padding must not inset the track. */
+.practice-table input[type=range]{padding:0!important}
+.practice-table .practice-frame,.practice-table #srcdoc-frame{height:58px}
+.frame-url{display:block;width:fit-content;max-width:100%;margin-bottom:8px;padding:4px 8px;border-radius:4px;background:var(--notice-bg);color:var(--notice-text);font:12px/1.4 system-ui;overflow-wrap:anywhere}
+
+.practice-table .iframe-row>td{height:auto;padding-block:10px}
+.practice-table .iframe-row .practice-frame{display:block;box-sizing:border-box;margin:0}
+
+/* Long labels keep their natural width; fields use the remaining row space. */
+.sample-line.compact-field{display:grid;grid-template-columns:max-content minmax(0,1fr);align-items:center;gap:10px}
+.sample-line.compact-field label:not(.choice){white-space:nowrap;max-width:none;overflow:visible;margin:0}
+.sample-line.compact-field .practice-field>input,.sample-line.compact-field>.editable,.sample-line.compact-field>practice-shadow{width:100%;min-width:0;max-width:none;box-sizing:border-box}
+.sample-line.compact-field .sample-note{grid-column:1/-1;width:100%;margin:0}
+@media(max-width:760px){
+ #practice-form #property-demo .practice-table{min-width:760px}
+}
+
+#dynamic-target{display:grid;grid-template-columns:max-content minmax(0,1fr);align-items:center;gap:10px}
+#dynamic-target label{white-space:nowrap;max-width:none;overflow:visible;margin:0}
+#dynamic-target input{width:100%;min-width:0;box-sizing:border-box}
