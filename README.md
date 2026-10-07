@@ -13,3 +13,9 @@ Current published website for the Autofill Chrome extension.
 Report issues at https://github.com/cp529414/Autofill/issues. Do not include private values or exported rules containing sensitive data.
 
 This repository contains only the current publication snapshot.
+
+## Website checks
+
+Use Node.js 24 or later. Run `npm ci` and `npm test` to check published links,
+page structure, sample backup targets, form behavior, and library initialization.
+These tests cover the website demos; the extension source is maintained separately.

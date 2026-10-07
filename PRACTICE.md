@@ -1,122 +1,103 @@
 # Practice coverage
 
-Open the **Practice** page at `practice.html`, use fictional values, and save
-one or more Autofill rules. The **Rule** column labels Type, Signature and
-Modifier only for an explicit property override such as `placeholder`. The
-extension infers `value` for native fields, `innerText` for editable text, and
-the matching action for groups/widgets. Values are not displayed in the Rule column. Click
-buttons show individual counters; expansion controls show their expanded state.
-Textboxes start at one line in height, and choices stay inline where space
-permits. Each table pairs **Practice** with **Rule**. All widget, picker, editor
-and React demos load automatically in separate frames. The website provides
-controls and local result checks; the installed extension performs the filling.
+Open [Practice](practice.html), use fictional values, and save Autofill rules.
+The Rule column shows Type and Signature, plus Modifier for explicit property
+changes such as `placeholder`. Ordinary fill values are chosen by you. The
+extension infers the field's value or editor text when Modifier is omitted.
 
-## All 14 rule types
+The main page loads select widgets, date/color pickers, seven editors and framework
+controls in its own document. Only the two dedicated frame examples use iframes.
+Use the main Practice URL for main-page rules. Standalone demos use their own URLs.
+The website provides controls; the installed extension performs the filling.
 
-| Rule type | Example target | Example value |
-|---|---|---|
-| `text` | `#full-name`, `#country`, `#editable` | `Alex Example`, `TW`, or multiline text |
-| `checkbox` | `#newsletter` | `true` / `false` with modifier `checked` |
-| `radio` | `#single-radio` | `true` with modifier `checked` |
-| `radioGroup` | `input[name="contact_method"]` | `010` selects the second radio |
-| `checkGroup` | `input[name="topics"]` | `101` selects the first and third boxes |
-| `multiselect` | `#interests` | `["HTML","JavaScript"]` (visible option labels) |
-| `otpGroup` | `#otp` | `123456` |
-| `bootstrapSelect` | `#bootstrap` in `practice/widgets.html` | `Taipei` (visible label) |
-| `select2` | `#select2` in `practice/widgets.html` | `Taipei` |
-| `tomSelect` | `#tom-select`, `#tom-input` in `practice/widgets.html` | `Taipei` / `New example` |
-| `chosen` | `#chosen` in `practice/widgets.html` | `Taipei` |
-| `tagify` | `#tags`, `#tags-area` in `practice/widgets.html` | `[{"value":"HTML"},{"value":"CSS"}]` |
-| `click` | `#click-target` | No fill value; triggers the local demo counter |
-| `javascript` | No CSS selector needed | `document.querySelector('#script-output').textContent = 'Script rule ran locally.';` |
+## Native examples on the main page
 
-Named widget types use their matching modifier. Native inputs and single selects
-use `text / value`; contenteditable examples use `text / innerText`. The main
-page also includes `placeholder`, `textContent`, read-only values, hidden inputs,
-and `data-hidden` synchronization examples.
+| Target | Type | Fictional value or action |
+| --- | --- | --- |
+| `#sample-text`, `#search`, `#password` | `text` | `Example text` |
+| `#sample-multiline`, `#editable` | `text` | Plain text, with actual newlines if needed |
+| `#quantity` | `text` | A number from 1 to 100 |
+| `#start-date`, `#month`, `#week` | `text` | `2026-10-07`, `2026-10`, `2026-W41` |
+| `#time`, `#datetime` | `text` | `14:30`, `2026-10-07T14:30` |
+| `#color`, `#range` | `text` | `#4b702e`, `75` |
+| `#country` | `text` | `Taipei` (visible option label) |
+| `#interests` | `multiselect` | `["London","Berlin"]` (visible labels) |
+| `input[name="contact_method"]` | `radioGroup` | `010` selects Manila |
+| `input[name="topics"]` | `checkGroup` | `101` selects Cairo and Nairobi |
+| `#otp` | `otpGroup` | `123456` |
+| `#placeholder-target` | `text` | Set Modifier to `placeholder` |
+| `#text-target` | `text` | Replace the paragraph text |
+| `#linked-visible` | `text` | Updates the linked hidden value |
+| `#readonly`, `#disabled-input` | `text` | Programmatic fill; manual editing is unavailable |
+| `#late-field` | `text` | Appears after Add a delayed field |
+| `#click-target`, `#click-link`, `summary`, `#role-tab` | `click` | Local action examples |
 
-## Native controls and actions
+Group masks follow document order: `1` selects and `0` clears. OTP supports typing,
+six-digit paste, and Backspace navigation. Click buttons have individual counters.
 
-Text, search, URL, telephone, email, password, number, date, month, week, time,
-datetime-local, color, range, hidden, checkbox, and radio inputs; textarea;
-single and multiple selects; datalist; contenteditable; and native button,
-submit, reset, image button, link, details, and summary actions are present.
-Click examples also cover button/link/menuitem/tab/checkbox/radio/switch roles.
-File selection must be manual; browsers do not permit filling file paths.
-Disabled inputs demonstrate unavailable controls.
+The main page does not contain email, telephone, URL, file, datalist, individual
+checkbox/radio rules, custom picker popups, or a JavaScript-rule target. These
+extension capabilities should not be inferred from this page's coverage.
 
-Use ID, class, name, and attribute selectors. `#open-shadow >>> input` and
-`#closed-shadow >>> input` demonstrate shadow-root selectors. The delayed input
-appears after selecting **Add a delayed field**. A regular iframe has its own
-`practice/frame.html` URL; the `srcdoc` frame uses its creator page's URL.
+## Shadow roots and frames
 
-## Library classes and picker detection
+Use the signatures shown beside the open and closed shadow-root examples:
+`practice-shadow[id="open-shadow"] >>> input[name="shadow-input"]` and the
+corresponding closed-shadow signature. A closed root cannot be inspected through
+ordinary page JavaScript; the extension supplies its own handling.
 
-The select/tag demo initializes real Bootstrap Select, Select2, Tom Select,
-Chosen, and Tagify widgets, including input-backed Tom Select with asynchronous
-creation and Tagify on both input and textarea. Their generated classes include
-`.selectpicker`, `.bootstrap-select`, `.select2-hidden-accessible`, `.select2`,
-`.tomselected`, `.ts-wrapper`, `.chosen-container`, `.tagify`, and `.tagify__input`.
+The regular frame uses [practice/frame.html](practice/frame.html) and `#frame-name`.
+The srcdoc frame contains `#srcdoc-name` and uses the creator page's URL. Frame
+selectors run in their own document, not in the main document.
 
-The picker demo initializes Flatpickr, jQuery UI Datepicker, jscolor, and Coloris.
-It covers `.flatpickr-input`, `.hasDatepicker`, `.jscolor`, `[data-jscolor]`, and
-`[data-coloris]`. Local picker popups cover `[data-provide="datepicker"]`,
-`[data-provide="colorpicker"]`, `[aria-haspopup="dialog"]`, and
-`[aria-haspopup="grid"]`. Human mode sets complete values for these pickers,
-with no character-by-character keyboard entry.
+## Library widgets and pickers
+
+Bootstrap Select, Select2, Tom Select, Chosen, and Tagify load automatically.
+Use `Taipei` for the select examples, `New example` for `#tom-input`, and
+`[{"value":"HTML"},{"value":"CSS"}]` for `#tags`. The Rule column shows each
+widget's corresponding type. The main page contains an input-backed Tagify demo.
+The [standalone widgets page](practice/widgets.html) also includes asynchronous
+Tom Select options at `#tom-remote`. Both pages use an input-backed Tagify demo.
+
+The remote-options demo supplies Taipei, London, and Tokyo after 200 ms locally;
+it does not send entered values to a server. Tom Select input creation also has
+a short delay.
+
+Flatpickr, jQuery UI Datepicker, jscolor, and Coloris are real library demos.
+Use `2026-10-07` for date widgets and `#4b702e` for color widgets. Human mode sets
+complete picker values. The [standalone pickers page](practice/pickers.html)
+contains the same library families.
 
 ## Editors and framework state
 
-All editors load on the Practice page; standalone demos also remain available at
-`practice/editor.html?kind=…`. Each page shows its actual
-selector. The check button reads the editor's model to confirm changes reached
-its state. Real demos cover Quill (`.ql-editor`), ProseMirror (`.ProseMirror`),
-Lexical (`[data-lexical-editor]`), Draft.js (`.public-DraftEditor-content`), Slate
-(`[data-slate-editor]`), TinyMCE (`body#tinymce` inside its iframe), and a React
-controlled input (`#react-input`). The CKEditor option is an explicitly labeled
-native contenteditable iframe with `body.cke_editable`; it tests that selector
-without loading the discontinued CKEditor 4 runtime.
+The main page includes Quill, ProseMirror, Lexical, Draft.js, Slate, inline TinyMCE,
+and a React controlled input. They use the main document and show their actual
+signatures. Standalone versions are available at
+[practice/editor.html](practice/editor.html), with the `?kind=` selected by the
+editor links. Include that query in a standalone page rule.
 
-Use the demo's own URL, including its `?kind=` query. An iframe does not share
-the outer page's selector scope. For widgets, `*/practice/widgets.html*` is a
-useful site pattern. For rich-text values use actual newlines, not HTML markup.
+TinyMCE is an inline `div`, not an iframe body. The standalone CKEditor option is
+a native contenteditable `div.cke_editable` fixture, not the CKEditor runtime.
+The current page has no model-check button. Real editor models are exposed for
+extension regression tests; visual text alone does not prove model synchronization.
+Use plain text with actual newlines rather than HTML markup.
 
-Dynamic value examples include `{{today}}`, `{{random:6}}`, `{{uuid}}`, and
-`{{clipboard}}`. Copy only fictional text for the clipboard example. Prefix an expression with a backslash, such as `\{{today}}` or `\{{clipboard}}`, to fill it literally. Two backslashes before an expression output one backslash and allow expansion. Ordinary backslashes remain unchanged. This follows Handlebars inline escaping; the full Handlebars language is not supported.
+## Downloadable rules
 
-## Dependencies
+The [guide](guide.html#json) provides JSON and CSV examples. Text rules overwrite
+matched fields. Dynamic templates, literal escaping, site exclusions, and manual
+execution are explained in the [guide](guide.html#dynamic-values); the main
+Practice table does not contain dedicated dynamic-template rows.
 
-The Practice page loads every library demo automatically and requests pinned CDN
-resources on opening. Failures appear in the demo's status
-message, while the native examples remain available. Native fields, picker formats, widget state, shadow roots, iframe filling, editor model updates, and click/script rules are verified with the extension loaded. The current checks include 125 recorder/layout checks and 125 generated-rule replay checks, including human-mode filling across all ten embedded demos. Browser-check instructions are maintained in the private extension repository at `tests/README.md`; they are not included in this published website snapshot. See [privacy](PRIVACY.md).
+## Dependencies and verification
 
-Library initialization follows the upstream examples:
-[Bootstrap Select](https://developer.snapappointments.com/bootstrap-select/examples/),
-[Select2](https://select2.org/getting-started/basic-usage/),
-[Tom Select](https://tom-select.js.org/docs/),
-[Tagify](https://github.com/yairEO/tagify),
-[Quill](https://quilljs.com/docs/quickstart), and
-[Flatpickr](https://flatpickr.js.org/examples/).
+Pinned third-party CDN resources are requested when library demos open. A failed
+library is named in the loading status; native examples remain available. Reload
+to retry. No practice values are submitted or persisted by the website. Capturing
+fields with the extension can store them in extension storage. See
+[privacy](PRIVACY.md).
 
-Import/export guidance and a downloadable full JSON example are in [the user guide](guide.html#json).
-
-Dynamic templates are documented in the guide. See [syntax and resolution timing](guide.html#dynamic-values).
-
-For one-shot filling, enable Manual execution and use the page context menu. See [manual execution](guide.html#manual-mode).
-
-Text rules overwrite their matched fields. The downloadable JSON provides an ordinary text rule and example preferences.
-
-## Named variables and remote options
-
-Use [the variables form](practice/named-variables.html) with fictional
-values. Define `name = Alex Example` and `email = alex@example.test` in Variables,
-then fill `#variable-name` with `{{var:name}}` and `#variable-email` with
-`{{var:email}}`. Define `greeting = Hello {{var:name}}` to test nested references
-in `#variable-greeting`. Save the variables and rules, then reload.
-
-Use the power button to deactivate a rule or variable, save, and reload. Inactive rules do not fill; references to inactive variables stop the affected rule. Wildcard exclusions override matching rules.
-
-`#tom-remote` in the widgets frame starts without options. Its local asynchronous
-loader provides Taipei, London, and Tokyo after 200 ms, simulating delayed remote
-options without sending demo values to a server. Use a `tomSelect` rule with
-value `Taipei`; both simple and human modes wait for the matching option.
+Run `npm ci` and `npm test` in the website checkout for page structure, links,
+form behavior, and loader checks. These checks do not load the extension. Recorder
+and replay scripts in the private source's tests folder are historical and need
+the setup and coverage review described in its test README before use.

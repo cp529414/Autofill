@@ -1,0 +1,15 @@
+{
+  "name": "autofill-website",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/website.test.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "jsdom": "^29.0.0",
+    "playwright": "^1.63.0"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
