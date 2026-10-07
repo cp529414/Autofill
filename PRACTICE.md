@@ -56,8 +56,8 @@ Bootstrap Select, Select2, Tom Select, Chosen, and Tagify load automatically.
 Use `Taipei` for the select examples, `New example` for `#tom-input`, and
 `[{"value":"HTML"},{"value":"CSS"}]` for `#tags`. The Rule column shows each
 widget's corresponding type. The main page contains an input-backed Tagify demo.
-The [standalone widgets page](practice/widgets.html) also includes Tagify on a
-textarea and asynchronous Tom Select options at `#tom-remote`.
+The [standalone widgets page](practice/widgets.html) also includes asynchronous
+Tom Select options at `#tom-remote`. Both pages use an input-backed Tagify demo.
 
 The remote-options demo supplies Taipei, London, and Tokyo after 200 ms locally;
 it does not send entered values to a server. Tom Select input creation also has
