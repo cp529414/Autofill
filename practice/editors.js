@@ -1,7 +1,7 @@
 import { loadStyle, loadScript, initializeDemos } from './library-loader.js';
 import { renderRule } from './sample-ui.js';
 export const editorNames = { quill: 'Quill', prosemirror: 'ProseMirror', lexical: 'Lexical', draft: 'Draft.js', slate: 'Slate', tinymce: 'TinyMCE', ckeditor: 'CKEditor class fixture', react: 'React controlled input' };
-export const editorSelectors = {"quill": "div[id=\"quill-input\"]", "prosemirror": "div[id=\"prosemirror-editor\"]", "lexical": "div[id=\"lexical-editor\"][role=\"textbox\"]", "draft": "div[id=\"draft-input\"][role=\"textbox\"]", "slate": "div[id=\"slate-editor\"][role=\"textbox\"]", "react": "input[id=\"react-input\"][name=\"react-input\"]", "tinymce": "div[id=\"tiny-editor\"][role=\"textbox\"]", "ckeditor": "div[id=\"ckeditor-editor\"][role=\"textbox\"]"};
+export const editorSelectors = {"quill": "div[id=\"quill-input\"]", "prosemirror": "div[id=\"prosemirror-editor\"]", "lexical": "div[id=\"lexical-editor\"][role=\"textbox\"]", "draft": "div[id=\"draft-input\"][role=\"textbox\"]", "slate": "div[id=\"slate-editor\"][role=\"textbox\"]", "react": "input[id=\"react-input\"]", "tinymce": "div[id=\"tiny-editor\"][role=\"textbox\"]", "ckeditor": "div[id=\"ckeditor-editor\"][role=\"textbox\"]"};
 export async function initializeEditor(kind, root) {
   let read;
   const element = (tag, id) => { const node = document.createElement(tag); if (id) node.id = id; root.append(node); return node; };
@@ -12,12 +12,14 @@ export async function initializeEditor(kind, root) {
     const editor = new window.Quill('#quill-editor', { theme: 'snow', modules: { toolbar: false } });
     editor.root.id = 'quill-input';
     editor.root.setAttribute('aria-label', 'Quill practice editor');
+    editor.root.setAttribute('role', 'textbox');
+    editor.root.setAttribute('aria-multiline', 'true');
     read = () => editor.getText();
   } else if (kind === 'prosemirror') {
     const { EditorState } = await import('https://esm.sh/prosemirror-state@1.4.3');
     const { EditorView } = await import('https://esm.sh/prosemirror-view@1.37.1');
     const { schema } = await import('https://esm.sh/prosemirror-schema-basic@1.2.3');
-    const editor = new EditorView(root, { state: EditorState.create({ schema }), attributes: { id: 'prosemirror-editor', 'aria-label': 'ProseMirror practice editor' } });
+    const editor = new EditorView(root, { state: EditorState.create({ schema }), attributes: { id: 'prosemirror-editor', 'aria-label': 'ProseMirror practice editor', role: 'textbox', 'aria-multiline': 'true' } });
     read = () => editor.state.doc.textBetween(0, editor.state.doc.content.size, '\n');
   } else if (kind === 'lexical') {
     const { createEditor, $getRoot, $createParagraphNode } = await import('https://esm.sh/lexical@0.21.0');
@@ -50,13 +52,16 @@ export async function initializeEditor(kind, root) {
     const { createRoot } = await import('https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1');
     const { createEditor, Node } = await import('https://esm.sh/slate@0.103.0');
     const { Slate, Editable, withReact } = await import('https://esm.sh/slate-react@0.108.0?deps=react@18.3.1,react-dom@18.3.1,slate@0.103.0');
+    let markReady;
+    const committed = new Promise(resolve => { markReady = resolve; });
     function App() {
+      React.useLayoutEffect(() => { markReady(); }, []);
       const [editor] = React.useState(() => withReact(createEditor()));
       read = () => editor.children.map(node => Node.string(node)).join('\n');
       return React.createElement(Slate, { editor, initialValue: [{ type: 'paragraph', children: [{ text: '' }] }] }, React.createElement(Editable, { id: 'slate-editor', 'aria-label': 'Slate practice editor' }));
     }
     createRoot(root).render(React.createElement(App));
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await committed;
   } else if (kind === 'tinymce') {
     await loadScript('https://cdn.jsdelivr.net/npm/tinymce@6.8.6/tinymce.min.js');
     const target = element('div', 'tiny-editor');
@@ -70,17 +75,21 @@ export async function initializeEditor(kind, root) {
     target.contentEditable = 'true';
     target.setAttribute('role', 'textbox');
     target.setAttribute('aria-label', 'CKEditor class fixture');
+    target.setAttribute('aria-multiline', 'true');
     read = () => target.innerText;
   } else if (kind === 'react') {
     const { default: React } = await import('https://esm.sh/react@18.3.1');
     const { createRoot } = await import('https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1');
+    let markReady;
+    const committed = new Promise(resolve => { markReady = resolve; });
     function App() {
+      React.useLayoutEffect(() => { markReady(); }, []);
       const [value, setValue] = React.useState('');
       read = () => value;
       return React.createElement('input', { id: 'react-input', name: 'react-input', 'aria-label': 'React controlled input', value, onChange: event => setValue(event.target.value) });
     }
     createRoot(root).render(React.createElement(App));
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await committed;
   }
   return () => read();
 }
