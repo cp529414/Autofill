@@ -88,7 +88,7 @@ Dynamic value examples include `{{today}}`, `{{random:6}}`, `{{uuid}}`, and
 
 The Practice page loads every library demo automatically and requests pinned CDN
 resources on opening. Failures appear in the demo's status
-message, while the native examples remain available. Native fields, picker formats, widget state, shadow roots, iframe filling, editor model updates, and click/script rules are verified with the extension loaded. The current checks include 125 recorder/layout checks and 125 generated-rule replay checks, including human-mode filling across all ten embedded demos. Run them using [the browser-check instructions](tests/README.md). See [privacy](PRIVACY.md).
+message, while the native examples remain available. Native fields, picker formats, widget state, shadow roots, iframe filling, editor model updates, and click/script rules are verified with the extension loaded. The current checks include 125 recorder/layout checks and 125 generated-rule replay checks, including human-mode filling across all ten embedded demos. Browser-check instructions are maintained in the private extension repository at `tests/README.md`; they are not included in this published website snapshot. See [privacy](PRIVACY.md).
 
 Library initialization follows the upstream examples:
 [Bootstrap Select](https://developer.snapappointments.com/bootstrap-select/examples/),
@@ -98,10 +98,25 @@ Library initialization follows the upstream examples:
 [Quill](https://quilljs.com/docs/quickstart), and
 [Flatpickr](https://flatpickr.js.org/examples/).
 
-Import/export guidance and a downloadable CSV example are in [the user guide](guide.html#csv).
+Import/export guidance and a downloadable full JSON example are in [the user guide](guide.html#json).
 
 Dynamic templates are documented in the guide. See [syntax and resolution timing](guide.html#dynamic-values).
 
-For one-shot filling, enable Manual execution only and use the page context menu or Alt+Shift+F. See [manual execution](guide.html#manual-mode).
+For one-shot filling, enable Manual execution and use the page context menu. See [manual execution](guide.html#manual-mode).
 
-Text rules overwrite their matched fields. The downloadable CSV provides an ordinary text rule.
+Text rules overwrite their matched fields. The downloadable JSON provides an ordinary text rule and example preferences.
+
+## Named variables and remote options
+
+Use [the variables form](practice/named-variables.html) with fictional
+values. Define `name = Alex Example` and `email = alex@example.test` in Variables,
+then fill `#variable-name` with `{{var:name}}` and `#variable-email` with
+`{{var:email}}`. Define `greeting = Hello {{var:name}}` to test nested references
+in `#variable-greeting`. Save the variables and rules, then reload.
+
+Use the power button to deactivate a rule or variable, save, and reload. Inactive rules do not fill; references to inactive variables stop the affected rule. Wildcard exclusions override matching rules.
+
+`#tom-remote` in the widgets frame starts without options. Its local asynchronous
+loader provides Taipei, London, and Tokyo after 200 ms, simulating delayed remote
+options without sending demo values to a server. Use a `tomSelect` rule with
+value `Taipei`; both simple and human modes wait for the matching option.
