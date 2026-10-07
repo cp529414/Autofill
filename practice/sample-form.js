@@ -12,14 +12,23 @@ for (const host of document.querySelectorAll('practice-shadow')) {
 }
 const srcdoc = document.querySelector('#srcdoc-frame');
 srcdoc.srcdoc = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="${new URL('practice/frame-field.css', location.href).href}"></head><body><div class="frame-field"><label for="srcdoc-name">Srcdoc text</label><input id="srcdoc-name"></div></body></html>`;
+const visibleLinked = document.querySelector('#linked-visible');
+const hiddenLinked = document.querySelector('#linked-value');
 const updateHidden = () => {
-  const visible = document.querySelector('#linked-visible');
-  const hidden = document.querySelector('#linked-value');
-  hidden.value = visible.value;
-  document.querySelector('#linked-output').textContent = hidden.value || 'Empty';
+  document.querySelector('#linked-output').textContent = hiddenLinked.value || 'Empty';
 };
-form.addEventListener('input', updateHidden);
-form.addEventListener('change', updateHidden);
+const synchronizeLinked = event => {
+  if (event.target === visibleLinked) hiddenLinked.value = visibleLinked.value;
+  updateHidden();
+};
+form.addEventListener('input', synchronizeLinked);
+form.addEventListener('change', synchronizeLinked);
+// Reset values are restored after the reset event finishes dispatching.
+form.addEventListener('reset', event => queueMicrotask(() => {
+  if (event.defaultPrevented) return;
+  hiddenLinked.value = visibleLinked.value;
+  updateHidden();
+}));
 updateHidden();
 const otpInputs = [...document.querySelectorAll('#otp input')];
 for (const [index, input] of otpInputs.entries()) {
