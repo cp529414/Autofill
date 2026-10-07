@@ -116,7 +116,7 @@ round(31, 'widgets initialize on both main and standalone pages', async () => {
         assert.ok(dom.window.document.querySelector(selector), selector);
         return { selectpicker() {}, select2() {}, chosen() {} };
       };
-      dom.window.Tagify = class { constructor(target) { assert.ok(target); } };
+      dom.window.Tagify = class { constructor(target) { assert.ok(target); this.DOM = { input: dom.window.document.createElement('span') }; } };
       dom.window.TomSelect = class { constructor(selector) { assert.ok(dom.window.document.querySelector(selector), `${path}: ${selector}`); } };
       const source = read('practice/widgets.js').replace(/^import .*;$/m, `const loadStyle = () => {}; const loadScript = async () => {}; const initializeDemos = async demos => { await Promise.all(demos.map(([, initialize]) => initialize())); return true; };`).replace("if (document.body.classList.contains('demo-page')) void initializeDemos([['Widgets', initializeWidgets]]);", '');
       const module = await import(`data:text/javascript;base64,${Buffer.from(source + `\n// ${path}`).toString('base64')}`);
