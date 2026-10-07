@@ -113,3 +113,6 @@ body .ui-datepicker .ui-datepicker-prev span::after,body .ui-datepicker .ui-date
 body .clr-picker .clr-close{position:absolute;inset:0;width:32px;height:32px;min-height:32px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--button-text);text-indent:-9999px;overflow:hidden}
 body .clr-picker .clr-close::before{display:none}
 body .clr-picker .clr-close::after{content:"×";position:absolute;inset:6px;width:20px;height:20px;border-radius:50%;background:var(--button);color:var(--button-text);font:18px/20px system-ui;text-indent:0;text-align:center}
+/* Coloris wraps its input; let that wrapper fill the same column as native pickers. */
+.demo-control>.clr-field{flex:1;min-width:0;width:0}
+.demo-control>.clr-field>input{box-sizing:border-box;width:100%;min-width:0}
