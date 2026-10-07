@@ -12,12 +12,14 @@ export async function initializeEditor(kind, root) {
     const editor = new window.Quill('#quill-editor', { theme: 'snow', modules: { toolbar: false } });
     editor.root.id = 'quill-input';
     editor.root.setAttribute('aria-label', 'Quill practice editor');
+    editor.root.setAttribute('role', 'textbox');
+    editor.root.setAttribute('aria-multiline', 'true');
     read = () => editor.getText();
   } else if (kind === 'prosemirror') {
     const { EditorState } = await import('https://esm.sh/prosemirror-state@1.4.3');
     const { EditorView } = await import('https://esm.sh/prosemirror-view@1.37.1');
     const { schema } = await import('https://esm.sh/prosemirror-schema-basic@1.2.3');
-    const editor = new EditorView(root, { state: EditorState.create({ schema }), attributes: { id: 'prosemirror-editor', 'aria-label': 'ProseMirror practice editor' } });
+    const editor = new EditorView(root, { state: EditorState.create({ schema }), attributes: { id: 'prosemirror-editor', 'aria-label': 'ProseMirror practice editor', role: 'textbox', 'aria-multiline': 'true' } });
     read = () => editor.state.doc.textBetween(0, editor.state.doc.content.size, '\n');
   } else if (kind === 'lexical') {
     const { createEditor, $getRoot, $createParagraphNode } = await import('https://esm.sh/lexical@0.21.0');
@@ -70,6 +72,7 @@ export async function initializeEditor(kind, root) {
     target.contentEditable = 'true';
     target.setAttribute('role', 'textbox');
     target.setAttribute('aria-label', 'CKEditor class fixture');
+    target.setAttribute('aria-multiline', 'true');
     read = () => target.innerText;
   } else if (kind === 'react') {
     const { default: React } = await import('https://esm.sh/react@18.3.1');
