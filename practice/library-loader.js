@@ -31,12 +31,13 @@ export function loadScript(url) {
   scripts.set(url, promise);
   return promise;
 }
-export async function initializeDemos(demos, status = document.querySelector('#load-status')) {
+export async function initializeDemos(demos, status = document.querySelector('#load-status'), { publishReadiness = true } = {}) {
+  if (publishReadiness) window.practiceReady = false;
   const results = await Promise.allSettled(demos.map(async ([name, initialize]) => { await initialize(); return name; }));
   const ready = results.filter(result => result.status === 'fulfilled').map(result => result.value);
   const unavailable = results.flatMap((result, index) => result.status === 'rejected' ? [demos[index][0]] : []);
   if (status) status.textContent = `${ready.join(', ')} ready.${unavailable.length ? ` Could not load ${unavailable.join(', ')}. Check your connection and reload.` : ''}`;
   if (status) status.hidden = unavailable.length === 0;
-  window.practiceReady = unavailable.length === 0;
+  if (publishReadiness) window.practiceReady = unavailable.length === 0;
   return unavailable.length === 0;
 }

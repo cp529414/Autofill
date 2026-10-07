@@ -36,7 +36,7 @@ export async function initializeWidgets() {
       await loadScript('https://cdn.jsdelivr.net/npm/@yaireo/tagify@4.17.9/dist/tagify.min.js');
       new window.Tagify(document.getElementById('tags'));
     }]
-  ], null);
+  ], null, { publishReadiness: false });
   if (!ready) throw new Error("Some select widgets could not load.");
 }
 if (document.body.classList.contains('demo-page')) void initializeDemos([['Widgets', initializeWidgets]]);

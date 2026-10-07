@@ -21,7 +21,7 @@ export async function initializePickers() {
       await loadScript('https://cdn.jsdelivr.net/npm/@melloware/coloris@0.25.0/dist/umd/coloris.js');
       window.Coloris({ el: '#coloris', format: 'hex', themeMode: 'auto' });
     }]
-  ], null);
+  ], null, { publishReadiness: false });
   if (!ready) throw new Error("Some pickers could not load.");
 }
 if (document.body.classList.contains('demo-page')) void initializeDemos([['Pickers', initializePickers]]);
