@@ -21,7 +21,7 @@ export async function initializeWidgets() {
     ['Tom Select', async () => {
       await loadScript('https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js');
       new window.TomSelect('#tom-select');
-      new window.TomSelect('#tom-remote', { maxItems: 1, loadThrottle: null, load(query, callback) {
+      if (document.querySelector('#tom-remote')) new window.TomSelect('#tom-remote', { maxItems: 1, loadThrottle: null, load(query, callback) {
         setTimeout(() => callback([
           { value: 'taipei', text: 'Taipei' }, { value: 'london', text: 'London' }, { value: 'tokyo', text: 'Tokyo' }
         ]), 200);
