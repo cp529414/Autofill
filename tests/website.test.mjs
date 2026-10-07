@@ -145,6 +145,9 @@ round(33, 'site pages have matching banners and iframe document has none', () =>
       continue;
     }
     assert.ok(header, path);
+    assert.equal(doc.querySelectorAll('footer a').length, 0, path);
+    assert.ok(header.querySelector('a[href="terms.html"]'), path);
+    assert.ok(header.querySelector('a[href="https://github.com/cp529414/Autofill/issues"]'), path);
     assert.equal(header.querySelector('.brand').textContent.trim(), 'Autofill', path);
     const links = [...header.querySelectorAll('a')].map(link => [link.textContent.trim(), new URL(link.getAttribute('href'), `https://example.test/${path}`).href]);
     reference ??= links;
