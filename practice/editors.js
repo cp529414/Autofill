@@ -1,7 +1,7 @@
 import { loadStyle, loadScript, initializeDemos } from './library-loader.js';
 import { renderRule } from './sample-ui.js';
 export const editorNames = { quill: 'Quill', prosemirror: 'ProseMirror', lexical: 'Lexical', draft: 'Draft.js', slate: 'Slate', tinymce: 'TinyMCE', ckeditor: 'CKEditor class fixture', react: 'React controlled input' };
-export const editorSelectors = {"quill": "div[id=\"quill-input\"]", "prosemirror": "div[id=\"prosemirror-editor\"]", "lexical": "div[id=\"lexical-editor\"][role=\"textbox\"]", "draft": "div[id=\"draft-input\"][role=\"textbox\"]", "slate": "div[id=\"slate-editor\"][role=\"textbox\"]", "react": "input[id=\"react-input\"][name=\"react-input\"]", "tinymce": "div[id=\"tiny-editor\"][role=\"textbox\"]", "ckeditor": "div[id=\"ckeditor-editor\"][role=\"textbox\"]"};
+export const editorSelectors = {"quill": "div[id=\"quill-input\"]", "prosemirror": "div[id=\"prosemirror-editor\"]", "lexical": "div[id=\"lexical-editor\"][role=\"textbox\"]", "draft": "div[id=\"draft-input\"][role=\"textbox\"]", "slate": "div[id=\"slate-editor\"][role=\"textbox\"]", "react": "input[id=\"react-input\"]", "tinymce": "div[id=\"tiny-editor\"][role=\"textbox\"]", "ckeditor": "div[id=\"ckeditor-editor\"][role=\"textbox\"]"};
 export async function initializeEditor(kind, root) {
   let read;
   const element = (tag, id) => { const node = document.createElement(tag); if (id) node.id = id; root.append(node); return node; };
