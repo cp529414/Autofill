@@ -13,21 +13,21 @@
   <main id="main"><article class="document">
     <h1>Autofill guide</h1>
     <p>Your rules and preferences stay in your browser. No account or server is required. Save changes and reload affected pages to use the new settings.</p>
-    <nav aria-label="Guide sections"><a href="#site-exclusions">Site exclusions</a><a href="#csv">JSON &amp; CSV</a><a href="#dynamic-values">Dynamic values</a><a href="#manual-mode">Manual execution</a></nav>
+    <nav aria-label="Guide sections"><a href="#site-exclusions">Site exclusions</a><a href="#json">JSON backup</a><a href="#dynamic-values">Dynamic values</a><a href="#manual-mode">Manual execution</a><a href="#variables">Variables</a></nav>
     <section id="site-exclusions">
       <h2>Site exclusions</h2>
-      <p>Open <strong>General Settings → Site exclusions</strong> and enter one URL pattern per line. Exclusions take priority over every matching fill, click, and script rule. Clipboard values are not read for excluded rules.</p>
+      <p>Open <strong>Site Exclusions tab</strong> and enter one URL pattern per line. Exclusions take priority over every matching fill, click, and script rule. Clipboard values are not read for excluded rules.</p>
       <ul><li><code>https://example.com/*</code> excludes every path on that host.</li><li><code>https://*.example.com/*</code> excludes its subdomains. Add both patterns to exclude the main host and its subdomains.</li><li><code>https://example.com/private/*</code> excludes only that path.</li></ul>
+      <p>Site exclusions and rule Site Pattern share the same matching logic. The scheme is optional: <code>example.com</code> matches only the root page on any supported scheme, while <code>https://example.com</code> matches only its HTTPS root. Use <code>example.com/*</code> to match all paths. A path without a wildcard matches only that exact URL, including its query and fragment.</p>
       <p><code>*</code> matches any characters. Matching uses the same URL patterns as the rule’s Site field, rather than page titles or regular expressions. Blank lines are ignored.</p>
       <p>Each iframe is checked against its own URL. If a page embeds a form from another host, add a pattern for that host too. Save settings, then reload the page. Removing an exclusion does not undo previous page changes.</p>
     </section>
-    <section id="csv">
-      <h2>JSON and CSV import/export</h2>
-      <p>Use <strong>Export CSV</strong> in the Rules Editor to download its current rows, including unsaved changes. To import, open <strong>Import Rules</strong>, paste JSON or CSV, choose a local file, or drop one file into the import text box. Autofill detects the format from its contents; no format selection is needed.</p>
-      <p><strong>Append</strong> adds rows; <strong>Replace</strong> replaces all rows in the editor. Neither writes saved rules immediately. Review the result and click <strong>Save Rules</strong>. Invalid files leave the editor untouched.</p>
-      <p>Download example rules as <a href="practice/rules-example.json" download>JSON</a> or <a href="practice/rules-example.csv" download>CSV</a>. Change the Site pattern to your actual Practice page URL before saving.</p>
-      <p>Headers are <code>type,signature,modifier,value,site,delay,private,fillMethod</code>. Type, signature, value, and site are required columns; the others are optional. Delay uses milliseconds and private is true or false. fillMethod is optional and defaults to overwrite. Quote cells containing commas, quotes, or newlines; double any quotes inside a quoted cell.</p>
-      <p>Exports contain real private values even when settings display dots. Cells beginning with formula characters receive an apostrophe prefix for spreadsheet use; Autofill removes this prefix on CSV import. Use JSON for exact backups. Rule exports do not include General Settings.</p>
+    <section id="json">
+      <h2>Full JSON backups</h2>
+      <p>Export JSON or Copy to Clipboard backs up rules, variables and their priority and active states, site exclusions, and all General preferences, including unsaved editor changes.</p>
+      <p>Open <strong>Import JSON</strong>, paste a backup or drop one JSON file, then click <strong>Import JSON</strong>. This restores the complete saved configuration and reloads settings. Invalid files change nothing. CSV and old rules-only formats are no longer supported.</p>
+      <p>The versioned format validates all fields and numeric ranges before saving. Loop intervals must be whole seconds from 3 to 2147483; loop counts range from 0 to 2147483647 (0 means unlimited). Backups include actual private rule values, but exclude capture buffers.</p>
+      <p><a href="practice/rules-example.json" download>Download a full JSON example</a>. Its rule targets the published Practice page; importing it also restores its example preferences.</p>
     </section>
     <section id="dynamic-values">
       <h2>Dynamic values and escaping</h2>
@@ -38,11 +38,19 @@
     </section>
     <section id="manual-mode">
       <h2>Manual execution</h2>
-      <ol><li>Save your rules. Open <strong>General Settings</strong>, enable <strong>Manual execution only</strong>, and save settings.</li><li>Reload the form page. Nothing fills automatically.</li><li>Right-click the page and choose <strong>Fill this page now</strong>, or press <strong>Alt+Shift+F</strong>. Change the shortcut in <code>chrome://extensions/shortcuts</code> if it conflicts with another shortcut.</li></ol>
+      <ol><li>Save your rules. Open <strong>General Settings</strong>, enable <strong>Manual execution</strong>, and save settings.</li><li>Reload the form page. Nothing fills automatically.</li><li>Right-click the page and choose <strong>Execute rules</strong>, or press <strong>Ctrl+Shift+K</strong> on Windows/Linux or <strong>⌘+Shift+K</strong> on macOS. Chrome shortcut settings can customize this binding; the menu displays the assigned shortcut.</li></ol>
       <p>The extension icon shows RUN when execution starts, OFF when the top page is excluded, or ERR when the command is unavailable. RUN means started; review page results to confirm successful filling.</p>
       <p>Each invocation reads saved rules and settings, then runs matching rules once across the page’s frames. Exclusions still apply. Loop mode is not started, even if its preference is enabled. Newly appearing fields on the same route remain eligible until navigation. After navigating, trigger another manual run.</p>
-      <p>Fill this page now also works in automatic mode; it stops the current loop until reload. Unsaved editor changes are not used. Chrome internal pages and other protected pages cannot be filled. Review click and script rules before running, because they can submit forms.</p>
+      <p>Unsaved editor changes are not used. Chrome internal pages and other protected pages cannot be filled. Review click and script rules before running, because they can submit forms.</p>
       <p>Try it on the <a href="practice.html">Practice page</a>: save a text rule, turn on manual mode, reload, and trigger the command.</p>
+    </section>
+    <section id="variables">
+      <h2>Named variables</h2>
+      <p>In Rules, the green power button means active and the grey crossed power button means inactive. Click once to change state, then save rules.</p>
+      <p>Open <strong>Variables</strong>, add a name such as <code>email</code> and a fictional value such as <code>alex@example.test</code>, then save. Use <code>{{var:email}}</code> in any matching rule. Names begin with a letter or underscore and contain letters, numbers, underscores, or hyphens. Names are case sensitive.</p>
+      <p>Variables may reference other variables: a <code>greeting</code> value of <code>Hello {{var:name}}</code> reuses <code>name</code>. Missing or inactive names, cycles, and nesting beyond 32 references stop the affected rule and report an error. Script rules are not expanded.</p>
+      <p>Use <code>\{{var:email}}</code> to fill the reference literally. Dynamic values inside variables resolve once per frame and are shared by rules using that variable. Rechecks reuse the result; a reload or manual run resolves fresh values. Clipboard contents are inserted literally. Separate frames may receive different random values.</p>
+      <p>Variable values stay local and visible in settings. Use the green/grey power button to activate or deactivate a variable, and the trash button to delete it. Save settings to apply changes. Variables are intended for reusable form text, not passwords. Try the <a href="practice/named-variables.html">variables practice form</a>.</p>
     </section>
   </article></main>
   <footer><a class="brand" href="./"><picture class="brand-icon"><source media="(prefers-color-scheme: dark)" srcset="assets/icons/icon-dark.svg"/><img src="assets/icons/icon-light.svg" width="36" height="36" alt=""/></picture>Autofill</a><p>Type less. Accomplish more.</p><div><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a></div><small>© 2026 cp529414 · Independent project.</small></footer>
