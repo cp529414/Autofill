@@ -82,13 +82,7 @@ The current page has no model-check button. Real editor models are exposed for
 extension regression tests; visual text alone does not prove model synchronization.
 Use plain text with actual newlines rather than HTML markup.
 
-## Named variables and downloadable rules
-
-Use [the variables form](practice/named-variables.html) with fictional values.
-Define `name = Alex Example`, `email = alex@example.test`, and
-`greeting = Hello {{var:name}}` in extension settings. Fill `#variable-name`,
-`#variable-email`, and `#variable-greeting` with their corresponding `{{var:…}}`
-templates. Save variables and rules, then reload.
+## Downloadable rules
 
 The [guide](guide.html#json) provides JSON and CSV examples. Text rules overwrite
 matched fields. Dynamic templates, literal escaping, site exclusions, and manual
