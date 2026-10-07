@@ -1,5 +1,14 @@
 import { loadStyle, loadScript, initializeDemos } from './library-loader.js';
 export async function initializeWidgets() {
+  const labels = new Map();
+  for (const id of ['tom-select', 'tom-remote', 'tom-input', 'chosen', 'tags']) {
+    const control = document.getElementById(id);
+    if (!control) continue;
+    const name = control.labels?.[0]?.textContent.trim() || control.getAttribute('aria-label') || id;
+    labels.set(id, name);
+    // Tom Select moves the label to its generated input; retain the source name.
+    control.setAttribute('aria-label', name);
+  }
   for (const url of [
     'https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css',
     'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
@@ -31,10 +40,13 @@ export async function initializeWidgets() {
     ['Chosen', async () => {
       await loadScript('https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js');
       window.jQuery('#chosen').chosen({ width: '100%' });
+      document.getElementById('chosen').nextElementSibling?.querySelector('.chosen-search-input')
+        ?.setAttribute('aria-label', `Search ${labels.get('chosen')}`);
     }],
     ['Tagify', async () => {
       await loadScript('https://cdn.jsdelivr.net/npm/@yaireo/tagify@4.17.9/dist/tagify.min.js');
-      new window.Tagify(document.getElementById('tags'));
+      const tagify = new window.Tagify(document.getElementById('tags'));
+      tagify.DOM.input.setAttribute('aria-label', labels.get('tags'));
     }]
   ], null, { publishReadiness: false });
   if (!ready) throw new Error("Some select widgets could not load.");
