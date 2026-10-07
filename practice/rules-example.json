@@ -1,11 +1,31 @@
-[
-  {
-    "type": "text",
-    "signature": "#sample-text",
-    "modifier": "",
-    "value": "Practice text",
-    "site": "https://cp529414.github.io/Autofill/practice.html",
-    "delay": 0,
-    "private": false
+{
+  "format": "autofill",
+  "version": 1,
+  "rules": [
+    {
+      "type": "text",
+      "signature": "#sample-text",
+      "modifier": "",
+      "value": "Practice text",
+      "site": "https://cp529414.github.io/Autofill/practice.html",
+      "delay": 0,
+      "private": false,
+      "enabled": true
+    }
+  ],
+  "variables": [],
+  "preferences": {
+    "manualMode": false,
+    "showModals": true,
+    "showLoopModal": true,
+    "userScriptsFallback": false,
+    "theme": "system",
+    "fillMode": "simple",
+    "humanIntervalMs": 10,
+    "recheckEnabled": false,
+    "recheckSeconds": 3,
+    "recheckTimes": 0,
+    "language": "en",
+    "siteExclusions": []
   }
-]
+}
