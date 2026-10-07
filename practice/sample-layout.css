@@ -29,7 +29,7 @@
 .practice-table .iframe-row .practice-frame{display:block;box-sizing:border-box;margin:0}
 
 /* Long labels keep their natural width; fields use the remaining row space. */
-.sample-line.compact-field{display:grid;grid-template-columns:max-content minmax(0,1fr);align-items:center;gap:10px}
+.sample-line.compact-field{display:grid;grid-template-columns:minmax(var(--field-label-width),max-content) minmax(0,1fr);align-items:center;gap:10px}
 .sample-line.compact-field label:not(.choice){white-space:nowrap;max-width:none;overflow:visible;margin:0}
 .sample-line.compact-field .practice-field>input,.sample-line.compact-field>.editable,.sample-line.compact-field>practice-shadow{width:100%;min-width:0;max-width:none;box-sizing:border-box}
 .sample-line.compact-field .sample-note{grid-column:1/-1;width:100%;margin:0}
@@ -37,6 +37,15 @@
  #practice-form #property-demo .practice-table{min-width:760px}
 }
 
-#dynamic-target{display:grid;grid-template-columns:max-content minmax(0,1fr);align-items:center;gap:10px}
+#dynamic-target{display:grid;grid-template-columns:minmax(var(--field-label-width),max-content) minmax(0,1fr);align-items:center;gap:10px}
 #dynamic-target label{white-space:nowrap;max-width:none;overflow:visible;margin:0}
 #dynamic-target input{width:100%;min-width:0;box-sizing:border-box}
+
+/* The first textbox establishes the minimum label column for every box target. */
+#main{--field-label-width:140px}
+.sample-line label:not(.choice),.demo-control>label,.editor-label,.target-label{flex:0 0 var(--field-label-width);max-width:none}
+.target-label{font-size:13px;overflow-wrap:break-word}
+.sample-line.compact-field>.property-target{width:100%;min-width:0;box-sizing:border-box;margin:0}
+@media(max-width:760px){
+ .sample-line:not(.compact-field) label:not(.choice),.demo-control>label,.editor-label{flex-basis:100%}
+}
