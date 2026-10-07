@@ -1,2 +1,4 @@
 @import url("../theme.css");
 *{box-sizing:border-box}body{margin:0;padding:10px;background:var(--surface);color:var(--text);font:14px/22px system-ui}.frame-field{display:flex;align-items:center;gap:10px}label{margin:0;font-size:13px;font-weight:600;white-space:nowrap}input{flex:1;min-width:0;width:0;height:36px;min-height:36px;max-height:36px;padding:6px 10px;border:1px solid var(--control-border);border-radius:6px;font:14px/22px system-ui;background:var(--surface);color:var(--text)}input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+/* Match the parent practice form's minimum label column. */
+.frame-field>label{flex:0 0 140px}
