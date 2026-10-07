@@ -57,28 +57,17 @@ Use `Sydney` for Bootstrap Select, `Lima` for Select2, `Toronto` for Tom Select,
 `Delhi` for Chosen, `New example` for `#tom-input`, and
 `[{"value":"HTML"},{"value":"CSS"}]` for `#tags`. The Rule column shows each
 widget's corresponding type. The main page contains an input-backed Tagify demo.
-The [standalone widgets page](practice/widgets.html) also includes asynchronous
-Tom Select options at `#tom-remote`. Both pages use an input-backed Tagify demo.
-
-The remote-options demo supplies Madrid, Rome, and Athens after 200 ms locally;
-it does not send entered values to a server. Tom Select input creation also has
-a short delay.
+Tom Select input creation has a short delay.
 
 Flatpickr, jQuery UI Datepicker, jscolor, and Coloris are real library demos.
 Use `2026-10-07` for date widgets and `#4b702e` for color widgets. Human mode sets
-complete picker values. The [standalone pickers page](practice/pickers.html)
-contains the same library families.
+complete picker values.
 
 ## Editors and framework state
 
 The main page includes Quill, ProseMirror, Lexical, Draft.js, Slate, inline TinyMCE,
 and a React controlled input. They use the main document and show their actual
-signatures. Standalone versions are available at
-[practice/editor.html](practice/editor.html), with the `?kind=` selected by the
-editor links. Include that query in a standalone page rule.
-
-TinyMCE is an inline `div`, not an iframe body. The standalone CKEditor option is
-a native contenteditable `div.cke_editable` fixture, not the CKEditor runtime.
+signatures. TinyMCE is an inline `div`, not an iframe body.
 The current page has no model-check button. Real editor models are exposed for
 extension regression tests; visual text alone does not prove model synchronization.
 Use plain text with actual newlines rather than HTML markup.

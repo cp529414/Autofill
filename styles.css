@@ -19,3 +19,5 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 .hero-icon{display:block;width:96px;height:96px}
 footer .brand-icon{width:32px;height:32px}
 @media(max-width:760px){.hero-icon{width:72px;height:72px}}
+
+.site-page{scrollbar-gutter:stable}

@@ -61,7 +61,7 @@ round(9, 'CSS imports resolve', () => {
   }
 });
 round(10, 'all JavaScript parses', () => {
-  for (const path of ['practice.js', ...readdirSync(resolve(root, 'practice')).filter(p => p.endsWith('.js')).map(p => `practice/${p}`)]) execFileSync(process.execPath, ['--check', resolve(root, path)]);
+  for (const path of ['practice.js', 'site-banner.js', ...readdirSync(resolve(root, 'practice')).filter(p => p.endsWith('.js')).map(p => `practice/${p}`)]) execFileSync(process.execPath, ['--check', resolve(root, path)]);
 });
 round(11, 'downloaded backup targets a real practice control', () => {
   const backup = JSON.parse(read('practice/rules-example.json'));
@@ -106,10 +106,10 @@ round(28, 'failed scripts can be retried', () => loaderFixture(async ({ loadScri
 round(29, 'readiness is published without a status element', () => loaderFixture(async ({ initializeDemos }, dom) => { assert.equal(await initializeDemos([['Demo', async () => {}]], null), true); assert.equal(dom.window.practiceReady, true); assert.equal(await initializeDemos([['Demo', async () => { throw Error('offline'); }]], null), false); assert.equal(dom.window.practiceReady, false); }));
 round(30, 'partial library failure names unavailable demos and preserves successes', () => loaderFixture(async ({ initializeDemos }, dom) => { const status = dom.window.document.querySelector('#load-status'); assert.equal(await initializeDemos([['Native', async () => {}], ['Remote', async () => { throw Error('offline'); }]], status), false); assert.match(status.textContent, /Native ready/); assert.match(status.textContent, /Could not load Remote/); assert.equal(status.hidden, false); assert.equal(await initializeDemos([['Native', async () => {}]], status), true); assert.equal(status.hidden, true); await initializeDemos([['Nested', async () => { throw Error('offline'); }]], null, { publishReadiness: false }); assert.equal(dom.window.practiceReady, true); }));
 
-round(31, 'widgets initialize on both main and standalone pages', async () => {
+round(31, 'widgets initialize on the main practice page', async () => {
   const previous = { document: globalThis.document, window: globalThis.window };
   try {
-    for (const path of ['practice.html', 'practice/widgets.html']) {
+    for (const path of ['practice.html']) {
       const dom = new JSDOM(read(path));
       globalThis.document = dom.window.document; globalThis.window = dom.window;
       dom.window.jQuery = selector => {
@@ -134,4 +134,21 @@ round(32, 'placeholder property rule stays usable after changing the property', 
   field.placeholder = 'Updated fictional placeholder';
   assert.equal(dom.window.document.querySelector(rule.dataset.signature), field);
   dom.window.close();
+});
+
+round(33, 'site pages have matching banners and iframe document has none', () => {
+  let reference;
+  for (const [path, doc] of documents) {
+    const header = doc.querySelector('header[data-site-banner]');
+    if (path === 'practice/frame.html') {
+      assert.equal(doc.querySelector('header'), null, path);
+      continue;
+    }
+    assert.ok(header, path);
+    assert.equal(header.querySelector('.brand').textContent.trim(), 'Autofill', path);
+    const links = [...header.querySelectorAll('a')].map(link => [link.textContent.trim(), new URL(link.getAttribute('href'), `https://example.test/${path}`).href]);
+    reference ??= links;
+    assert.deepEqual(links, reference, path);
+    assert.ok(doc.querySelector(`script[src="${path.startsWith('practice/') ? '../' : ''}site-banner.js"]`), path);
+  }
 });
