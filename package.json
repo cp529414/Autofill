@@ -1,0 +1,13 @@
+{
+  "name": "autofill-website",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/website.test.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^29.0.0"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
