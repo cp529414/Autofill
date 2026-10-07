@@ -53,13 +53,14 @@ selectors run in their own document, not in the main document.
 ## Library widgets and pickers
 
 Bootstrap Select, Select2, Tom Select, Chosen, and Tagify load automatically.
-Use `Taipei` for the select examples, `New example` for `#tom-input`, and
+Use `Sydney` for Bootstrap Select, `Lima` for Select2, `Ottawa` for Tom Select,
+`Pune` for Chosen, `New example` for `#tom-input`, and
 `[{"value":"HTML"},{"value":"CSS"}]` for `#tags`. The Rule column shows each
 widget's corresponding type. The main page contains an input-backed Tagify demo.
 The [standalone widgets page](practice/widgets.html) also includes asynchronous
 Tom Select options at `#tom-remote`. Both pages use an input-backed Tagify demo.
 
-The remote-options demo supplies Taipei, London, and Tokyo after 200 ms locally;
+The remote-options demo supplies David, Limón, and Colón after 200 ms locally;
 it does not send entered values to a server. Tom Select input creation also has
 a short delay.
 
