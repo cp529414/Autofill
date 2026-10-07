@@ -124,3 +124,14 @@ round(31, 'widgets initialize on both main and standalone pages', async () => {
     }
   } finally { globalThis.document = previous.document; globalThis.window = previous.window; }
 });
+
+round(32, 'placeholder property rule stays usable after changing the property', () => {
+  const dom = fixture();
+  const rule = dom.window.document.querySelector('[data-capture-target="#placeholder-target"]');
+  const field = dom.window.document.querySelector(rule.dataset.signature);
+  assert.ok(field);
+  for (const term of ['Type', 'Signature', 'Modifier']) assert.ok([...rule.querySelectorAll('dt')].some(node => node.textContent === term));
+  field.placeholder = 'Updated fictional placeholder';
+  assert.equal(dom.window.document.querySelector(rule.dataset.signature), field);
+  dom.window.close();
+});
