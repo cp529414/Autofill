@@ -32,6 +32,23 @@ form.addEventListener('reset', event => queueMicrotask(() => {
 updateHidden();
 const otpInputs = [...document.querySelectorAll('#otp input')];
 for (const [index, input] of otpInputs.entries()) {
+  input.addEventListener('paste', event => {
+    const digits = event.clipboardData?.getData('text').trim();
+    if (!digits || !/^[0-9]+$/.test(digits)) return;
+    event.preventDefault();
+    const targets = otpInputs.slice(index, index + digits.length);
+    for (const [offset, target] of targets.entries()) {
+      target.value = digits[offset];
+      target.dispatchEvent(new Event('input', { bubbles: true }));
+      target.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    otpInputs[Math.min(index + targets.length, otpInputs.length - 1)]?.focus();
+  });
+  input.addEventListener('keydown', event => {
+    if (event.isComposing || event.key !== 'Backspace' || input.value || index === 0) return;
+    event.preventDefault();
+    otpInputs[index - 1].focus();
+  });
   input.addEventListener('input', event => {
     if (event.isComposing || !event.inputType?.startsWith('insert') || !input.value) return;
     otpInputs[index + 1]?.focus();
