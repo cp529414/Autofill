@@ -7,11 +7,11 @@ for (const host of document.querySelectorAll('practice-shadow')) {
   style.textContent = 'input{box-sizing:border-box;width:100%;height:36px;padding:6px 10px;border:1px solid var(--control-border);border-radius:6px;font:16px system-ui;background:var(--surface);color:var(--text)}input:focus-visible{outline:3px solid var(--focus);outline-offset:4px}';
   const input = document.createElement('input');
   input.name = 'shadow-input';
-  input.setAttribute('aria-label', host.hasAttribute('closed') ? 'Closed shadow-root input' : 'Open shadow-root input');
+  input.setAttribute('aria-label', host.hasAttribute('closed') ? 'Closed shadow root' : 'Open shadow root');
   root.append(style, input);
 }
 const srcdoc = document.querySelector('#srcdoc-frame');
-srcdoc.srcdoc = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="${new URL('practice/frame-field.css', location.href).href}"></head><body><div class="frame-field"><label for="srcdoc-name">Srcdoc text</label><input id="srcdoc-name"></div></body></html>`;
+srcdoc.srcdoc = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="${new URL('practice/frame-field.css', location.href).href}"></head><body><div class="frame-field"><label for="srcdoc-name">Srcdoc input</label><input id="srcdoc-name"></div></body></html>`;
 const visibleLinked = document.querySelector('#linked-visible');
 const hiddenLinked = document.querySelector('#linked-value');
 const updateHidden = () => {
