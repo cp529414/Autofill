@@ -32,7 +32,7 @@ export async function initializeWidgets() {
       new window.TomSelect('#tom-select');
       if (document.querySelector('#tom-remote')) new window.TomSelect('#tom-remote', { maxItems: 1, loadThrottle: null, load(query, callback) {
         setTimeout(() => callback([
-          { value: 'taipei', text: 'Taipei' }, { value: 'london', text: 'London' }, { value: 'tokyo', text: 'Tokyo' }
+          { value: 'madrid', text: 'Madrid' }, { value: 'rome', text: 'Rome' }, { value: 'athens', text: 'Athens' }
         ]), 200);
       } });
       new window.TomSelect('#tom-input', { maxItems: 1, create(input, callback) { setTimeout(() => callback({ value: input, text: input }), 200); } });
