@@ -116,3 +116,8 @@ body .clr-picker .clr-close::after{content:"×";position:absolute;inset:6px;widt
 /* Coloris wraps its input; let that wrapper fill the same column as native pickers. */
 .demo-control>.clr-field{flex:1;min-width:0;width:0}
 .demo-control>.clr-field>input{box-sizing:border-box;width:100%;min-width:0}
+
+/* Standalone demo banners use the same outer spacing as the main site. */
+.demo-page:not(.embedded-demo){padding:0;background:var(--page)}
+.demo-page:not(.embedded-demo)>main{padding:26px 32px}
+@media(max-width:760px){.demo-page:not(.embedded-demo)>main{padding-inline:20px}}
