@@ -1,3 +1,4 @@
+/*! Autofill website (c) 2026 cp529414. All rights reserved. See LICENSE. */
 "use strict";
 const passwordInput = document.querySelector('#password');
 const passwordToggle = document.querySelector('#toggle-password');

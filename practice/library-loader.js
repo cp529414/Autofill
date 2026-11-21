@@ -1,3 +1,4 @@
+/*! Autofill website (c) 2026 cp529414. All rights reserved. See LICENSE. */
 const scripts = new Map();
 const styles = new Set();
 export function loadStyle(url) {

@@ -1,3 +1,4 @@
+/*! Autofill website (c) 2026 cp529414. All rights reserved. See LICENSE. */
 import { loadStyle, loadScript, initializeDemos } from './library-loader.js';
 export async function initializePickers() {
   loadStyle('https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css');

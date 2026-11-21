@@ -1,3 +1,4 @@
+/*! Autofill website (c) 2026 cp529414. All rights reserved. See LICENSE. */
 import { initializeDemos } from './library-loader.js';
 import { initializeWidgets } from './widgets.js';
 import { initializePickers } from './pickers.js';

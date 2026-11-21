@@ -1,3 +1,4 @@
+/*! Autofill website (c) 2026 cp529414. All rights reserved. See LICENSE. */
 "use strict";
 const form = document.querySelector('#practice-form');
 // These are ordinary demo components; no extension code runs on this website.

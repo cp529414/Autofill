@@ -1,3 +1,4 @@
+/*! Autofill website (c) 2026 cp529414. All rights reserved. See LICENSE. */
 /** Shared compact rule details and local click counters for the sample pages. */
 export function renderRule(type, signature, modifier) {
   const line = document.createElement('div');

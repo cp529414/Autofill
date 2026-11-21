@@ -1,3 +1,4 @@
+/*! Autofill website (c) 2026 cp529414. All rights reserved. See LICENSE. */
 import { loadStyle, loadScript, initializeDemos } from './library-loader.js';
 import { renderRule } from './sample-ui.js';
 export const editorNames = { quill: 'Quill', prosemirror: 'ProseMirror', lexical: 'Lexical', draft: 'Draft.js', slate: 'Slate', tinymce: 'TinyMCE', ckeditor: 'CKEditor class fixture', react: 'React controlled input' };
