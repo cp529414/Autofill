@@ -20,7 +20,7 @@ The website provides controls; the installed extension performs the filling.
 | `#start-date`, `#month`, `#week` | `text` | `2026-10-07`, `2026-10`, `2026-W41` |
 | `#time`, `#datetime` | `text` | `14:30`, `2026-10-07T14:30` |
 | `#color`, `#range` | `text` | `#4b702e`, `75` |
-| `#country` | `text` | `Taipei` (visible option label) |
+| `#country` | `text` | `New York` (visible option label) |
 | `#interests` | `multiselect` | `["London","Berlin"]` (visible labels) |
 | `input[name="contact_method"]` | `radioGroup` | `010` selects Manila |
 | `input[name="topics"]` | `checkGroup` | `101` selects Cairo and Nairobi |

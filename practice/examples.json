@@ -3,7 +3,7 @@
     "type": "text",
     "signature": "input[id=\"full-name\"][name=\"full-name\"][type=\"text\"]",
     "modifier": "value",
-    "value": "Alex Example"
+    "value": "Alex Rodri"
   },
   {
     "type": "text",
@@ -21,7 +21,7 @@
     "type": "text",
     "signature": "textarea[id=\"address\"][name=\"address\"]",
     "modifier": "value",
-    "value": "123 Example Street\nTaipei"
+    "value": "123 Example Street\nNew York"
   },
   {
     "type": "text",
