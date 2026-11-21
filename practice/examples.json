@@ -184,5 +184,17 @@
     "signature": "practice-shadow[id=\"closed-shadow\"] >>> input[name=\"shadow-input\"]",
     "modifier": "value",
     "value": "Closed shadow value"
+  },
+  {
+    "type": "ariaSelect",
+    "signature": "button[id=\"aria-city\"][role=\"combobox\"]",
+    "modifier": "ariaSelect",
+    "value": "Taipei"
+  },
+  {
+    "type": "ariaSelect",
+    "signature": "input[id=\"aria-search\"][role=\"combobox\"]",
+    "modifier": "ariaSelect",
+    "value": "Lima"
   }
 ]

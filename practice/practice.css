@@ -121,3 +121,10 @@ body .clr-picker .clr-close::after{content:"×";position:absolute;inset:6px;widt
 .demo-page:not(.embedded-demo){padding:0;background:var(--page)}
 .demo-page:not(.embedded-demo)>main{padding:26px 32px}
 @media(max-width:760px){.demo-page:not(.embedded-demo)>main{padding-inline:20px}}
+.aria-combo{position:relative}
+.aria-combo [role=combobox]{width:100%;min-height:48px;display:block;text-align:left;font:inherit;font-weight:400;background:var(--surface);color:var(--text);border:1px solid var(--control-border);border-radius:6px;padding:12px}
+.aria-combo [role=listbox]{position:absolute;z-index:5;inset-inline:0;margin:4px 0 0;padding:4px;list-style:none;max-height:180px;overflow:auto;background:var(--surface);color:var(--text);border:1px solid var(--control-border);border-radius:6px}
+.aria-combo [role=listbox][hidden]{display:none}
+.aria-combo [role=option]{padding:8px 10px;border-radius:4px;cursor:pointer}
+.aria-combo [role=option][hidden]{display:none}
+.aria-combo [role=option]:hover,.aria-combo [role=option][aria-selected=true]{background:var(--raised)}
